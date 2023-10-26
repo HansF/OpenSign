@@ -62,7 +62,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
               !item.children ? (
                 <li key={item.title} onClick={() => closeSidebar()}>
                   <Link
-                    className={`mx-auto flex items-center hover:bg-[#eef1f5] p-3 lg:p-4 hover:no-underline`}
+                    className={`mx-auto flex items-center hover:bg-[#eef1f5] p-3 lg:p-4 hover:no-underline cursor-pointer`}
                     to={`/${item.pageType}/${item.objectId}`}
                   >
                     <i className={item.icon + " text-[18px]"}></i>
@@ -74,9 +74,9 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
               ) : (
                 <Submenu key={item.title} icon={item.icon} title={item.title}>
                   {item.children.map((item) => (
-                    <li key={item.title} onClick={() => closeSidebar()}>
+                    <li key={item.title} onClick={() => closeSidebar()} className="pl-6 md:pl-8 hover:bg-[#eef1f5] cursor-pointer">
                       <Link
-                        className={`mx-auto flex items-center hover:bg-[#eef1f5] p-2 lg:p-3 hover:no-underline`}
+                        className={`mx-auto flex items-center p-2 lg:p-3 hover:no-underline`}
                         to={`/${item.pageType}/${item.objectId}`}
                       >
                         <i className={item.icon + " text-[18px]"}></i>
@@ -92,9 +92,21 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
           </>
         )}
       </ul>
-      <div className="mt-4 flex justify-center items-center text-[25px] text-black">
+      <div className="mt-4 flex justify-center items-center text-[25px] text-black gap-3">
         <NavLink to="https://github.com/opensignlabs/opensign" target="_blank">
-          <i className="fa-brands fa-github cursor-pointer"></i>
+          <i className="fa-brands fa-github"></i>
+        </NavLink>
+        <NavLink
+          to="https://www.linkedin.com/company/opensign%E2%84%A2/"
+          target="_blank"
+        >
+          <i className="fa-brands fa-linkedin"></i>
+        </NavLink>
+        <NavLink to="https://www.twitter.com/opensignlabs" target="_blank">
+          <i className="fa-brands fa-square-x-twitter"></i>
+        </NavLink>
+        <NavLink to="https://discord.com/invite/xe9TDuyAyj" target="_blank">
+          <i className="fa-brands fa-discord"></i>
         </NavLink>
       </div>
     </div>

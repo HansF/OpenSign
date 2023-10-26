@@ -1,23 +1,19 @@
+import axios from 'axios'
+
 async function sendMailOTPv1(request) {
   try {
     //--for elearning app side
     let code = Math.floor(1000 + Math.random() * 9000);
-    let getMessage = code + ' This is your verification code';
     let email = request.params.email;
-    var Hashcode;
     var TenantId = request.params.TenantId ? request.params.TenantId : undefined;
     // console.log("In tempSendOTPv2");
 
-    console.log(JSON.stringify(request));
-
-    var encoded = encodeURIComponent(Hashcode);
-    var otp = '<%23> You OTP is:' + code + ' ' + encoded + ' -QikEln';
-    otp = otp.toString();
+    // console.log(JSON.stringify(request));
 
     if (email) {
       axios({
         method: 'POST',
-        url: serverUrl + '/functions/sendmail',
+        url: process.env.SERVER_URL + '/functions/sendmail',
         headers: {
           'Content-Type': 'application/json',
           'X-Parse-Application-Id': process.env.APP_ID,
